@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 5214785619154208011}
   m_Layer: 0
   m_Name: Stadium
-  m_TagString: Stadium
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -317,7 +317,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4833896530864824241}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -29.73, y: -0.994, z: -8.110002}
   m_LocalScale: {x: 0.58, y: 0.58, z: 0.58}
   m_ConstrainProportionsScale: 1
@@ -349,7 +349,7 @@ GameObject:
   - component: {fileID: 5752251868534439672}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
