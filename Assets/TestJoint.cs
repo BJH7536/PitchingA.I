@@ -10,7 +10,7 @@ public class Testing : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.Space))
         {
-            rb.AddForce(new Vector3(0, 20f, 0), ForceMode.Impulse);
+            rb.AddForce(new Vector3(0, 5f, 0), ForceMode.Impulse);
         }
     }
 }
