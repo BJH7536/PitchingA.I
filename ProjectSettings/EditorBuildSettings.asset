@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/PitchingScene.unity
+    guid: 2f76069ff7e319a478e118feded7fd58
   m_configObjects: {}

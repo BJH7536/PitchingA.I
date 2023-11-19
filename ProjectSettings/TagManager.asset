@@ -6,6 +6,8 @@ TagManager:
   tags:
   - StrikeZone
   - ground
+  - BaseballBall
+  - PitcherRightHand
   layers:
   - Default
   - TransparentFX
