@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 
 public class PitcherAgent : Agent
 {
-    [Header("Target To Walk Towards")] 
+    [Header("Target To Hit")] 
     public Transform target;  // StrikeZone
 
     [Header("Body Parts")] 
@@ -17,23 +17,19 @@ public class PitcherAgent : Agent
     public Transform LeftUpLeg;
     public Transform LeftLeg;
     public Transform LeftFoot;
-    public Transform LeftToeBase;
 
     public Transform RightUpLeg;
     public Transform RightLeg;
     public Transform RightFoot;
-    public Transform RightToeBase;
 
-    public Transform Spine1;
+    public Transform Spine;
 
-    public Transform LeftShoulder;
     public Transform LeftArm;
     public Transform LeftForeArm;
     public Transform LeftHand;
 
     public Transform Head;
 
-    public Transform RightShoulder;
     public Transform RightArm;
     public Transform RightForeArm;
     public Transform RightHand;
@@ -55,27 +51,28 @@ public class PitcherAgent : Agent
     public Transform RightHandThumb2;
     public Transform RightHandThumb3;
 
+    [Header("Right Hand Fingers")]
+    public GameObject BaseballBall;
+
     JointDriveController m_JdController;
+    Vector3 BallInitPos;
 
     public override void Initialize()
     {
+        //Setup each body part
         m_JdController = GetComponent<JointDriveController>();
         m_JdController.SetupBodyPart(Hips);
         m_JdController.SetupBodyPart(LeftUpLeg);
         m_JdController.SetupBodyPart(LeftLeg);
         m_JdController.SetupBodyPart(LeftFoot);
-        m_JdController.SetupBodyPart(LeftToeBase);
         m_JdController.SetupBodyPart(RightUpLeg);
         m_JdController.SetupBodyPart(RightLeg);
         m_JdController.SetupBodyPart(RightFoot);
-        m_JdController.SetupBodyPart(RightToeBase);
-        m_JdController.SetupBodyPart(Spine1);
-        m_JdController.SetupBodyPart(LeftShoulder);
+        m_JdController.SetupBodyPart(Spine);
         m_JdController.SetupBodyPart(LeftArm);
         m_JdController.SetupBodyPart(LeftForeArm);
         m_JdController.SetupBodyPart(LeftHand);
         m_JdController.SetupBodyPart(Head);
-        m_JdController.SetupBodyPart(RightShoulder);
         m_JdController.SetupBodyPart(RightArm);
         m_JdController.SetupBodyPart(RightForeArm);
         m_JdController.SetupBodyPart(RightHand);
@@ -95,6 +92,7 @@ public class PitcherAgent : Agent
         m_JdController.SetupBodyPart(RightHandThumb2);
         m_JdController.SetupBodyPart(RightHandThumb3);
 
+        BallInitPos = BaseballBall.transform.localPosition;
     }
 
     /// <summary>
@@ -102,22 +100,13 @@ public class PitcherAgent : Agent
     /// </summary>
     public override void OnEpisodeBegin()
     {
-        ////Reset all of the body parts
-        //foreach (var bodyPart in m_JdController.bodyPartsDict.Values)
-        //{
-        //    bodyPart.Reset(bodyPart);
-        //}
+        BaseballBall.transform.localPosition = BallInitPos;
 
-        ////Random start rotation to help generalize
-        //hips.rotation = Quaternion.Euler(0, Random.Range(0.0f, 360.0f), 0);
-
-        //UpdateOrientationObjects();
-
-        ////Set our goal walking speed
-        //MTargetWalkingSpeed =
-        //    randomizeWalkSpeedEachEpisode ? Random.Range(0.1f, m_maxWalkingSpeed) : MTargetWalkingSpeed;
-
-        //SetResetParameters();
+        //Reset all of the body parts
+        foreach (var bodyPart in m_JdController.bodyPartsDict.Values)
+        {
+            bodyPart.Reset(bodyPart);
+        }
     }
 
     /// <summary>
@@ -125,97 +114,62 @@ public class PitcherAgent : Agent
     /// </summary>
     public void CollectObservationBodyPart(BodyPart bp, VectorSensor sensor)
     {
-        ////GROUND CHECK
-        //sensor.AddObservation(bp.groundContact.touchingGround); // Is this bp touching the ground
+        //GROUND CHECK
+        sensor.AddObservation(bp.groundContact.touchingGround); // Is this bp touching the ground
 
-        ////Get velocities in the context of our orientation cube's space
-        ////Note: You can get these velocities in world space as well but it may not train as well.
-        //sensor.AddObservation(m_OrientationCube.transform.InverseTransformDirection(bp.rb.velocity));
-        //sensor.AddObservation(m_OrientationCube.transform.InverseTransformDirection(bp.rb.angularVelocity));
+        // BodyPart로부터 무엇을 관측해야 할까?
 
-        ////Get position relative to hips in the context of our orientation cube's space
-        //sensor.AddObservation(m_OrientationCube.transform.InverseTransformDirection(bp.rb.position - hips.position));
-
-        //if (bp.rb.transform != hips && bp.rb.transform != handL && bp.rb.transform != handR)
-        //{
-        //    sensor.AddObservation(bp.rb.transform.localRotation);
-        //    sensor.AddObservation(bp.currentStrength / m_JdController.maxJointForceLimit);
-        //}
+        if (bp.rb.transform != Hips)            // Hips를 제외한 모든 BodyPart에 대한 관측
+        {
+            sensor.AddObservation(bp.rb.transform.localRotation);
+            sensor.AddObservation(bp.currentStrength / m_JdController.maxJointForceLimit);
+        }
     }
 
     /// <summary>
     /// Loop over body parts to add them to observation.
     /// </summary>
-    public override void CollectObservations(VectorSensor sensor)
+    public override void CollectObservations(VectorSensor sensor)       // 관측값을 Brain한테 전달
     {
-        //var cubeForward = m_OrientationCube.transform.forward;
+        // [관측값]
+        // 야구공의 3차원 로컬 좌표 : 3개
+        // 모든 BodyPart의 로컬 회전값 (4차원) + 가해지는 힘 + touchingGround유무 : 29(Hip제외) * 6 + 1(Hip) * 1 = 175개
 
-        ////velocity we want to match
-        //var velGoal = cubeForward * MTargetWalkingSpeed;
-        ////ragdoll's avg vel
-        //var avgVel = GetAvgVelocity();
+        sensor.AddObservation(BaseballBall.transform.localPosition);
 
-        ////current ragdoll velocity. normalized
-        //sensor.AddObservation(Vector3.Distance(velGoal, avgVel));
-        ////avg body vel relative to cube
-        //sensor.AddObservation(m_OrientationCube.transform.InverseTransformDirection(avgVel));
-        ////vel goal relative to cube
-        //sensor.AddObservation(m_OrientationCube.transform.InverseTransformDirection(velGoal));
-
-        ////rotation deltas
-        //sensor.AddObservation(Quaternion.FromToRotation(hips.forward, cubeForward));
-        //sensor.AddObservation(Quaternion.FromToRotation(head.forward, cubeForward));
-
-        ////Position of target position relative to cube
-        //sensor.AddObservation(m_OrientationCube.transform.InverseTransformPoint(target.transform.position));
-
-        //foreach (var bodyPart in m_JdController.bodyPartsList)
-        //{
-        //    CollectObservationBodyPart(bodyPart, sensor);
-        //}
+        foreach (var bodyPart in m_JdController.bodyPartsList)
+        {
+            CollectObservationBodyPart(bodyPart, sensor);
+        }
     }
 
-    public override void OnActionReceived(ActionBuffers actionBuffers)
-
+    // Brain으로부터 받은 action들을 각 관절들에다가 적용.
+    public override void OnActionReceived(ActionBuffers actionBuffers)      // Brain으로부터 받은 Action들
     {
-        //var bpDict = m_JdController.bodyPartsDict;
-        //var i = -1;
+        var bpDict = m_JdController.bodyPartsDict;
+        var i = -1;
 
-        //var continuousActions = actionBuffers.ContinuousActions;
-        //bpDict[hips].SetJointTargetRotation(continuousActions[++i], continuousActions[++i], continuousActions[++i]);
-        //bpDict[spine].SetJointTargetRotation(continuousActions[++i], continuousActions[++i], continuousActions[++i]);
+        var continuousActions = actionBuffers.ContinuousActions;
 
-        //bpDict[thighL].SetJointTargetRotation(continuousActions[++i], continuousActions[++i], 0);
-        //bpDict[thighR].SetJointTargetRotation(continuousActions[++i], continuousActions[++i], 0);
-        //bpDict[shinL].SetJointTargetRotation(continuousActions[++i], 0, 0);
-        //bpDict[shinR].SetJointTargetRotation(continuousActions[++i], 0, 0);
-        //bpDict[footR].SetJointTargetRotation(continuousActions[++i], continuousActions[++i], continuousActions[++i]);
-        //bpDict[footL].SetJointTargetRotation(continuousActions[++i], continuousActions[++i], continuousActions[++i]);
+        // 29 * 4  = 116
 
-        //bpDict[armL].SetJointTargetRotation(continuousActions[++i], continuousActions[++i], 0);
-        //bpDict[armR].SetJointTargetRotation(continuousActions[++i], continuousActions[++i], 0);
-        //bpDict[forearmL].SetJointTargetRotation(continuousActions[++i], 0, 0);
-        //bpDict[forearmR].SetJointTargetRotation(continuousActions[++i], 0, 0);
-        //bpDict[head].SetJointTargetRotation(continuousActions[++i], continuousActions[++i], 0);
-
-        ////update joint strength settings
-        //bpDict[chest].SetJointStrength(continuousActions[++i]);
-        //bpDict[spine].SetJointStrength(continuousActions[++i]);
-        //bpDict[head].SetJointStrength(continuousActions[++i]);
-        //bpDict[thighL].SetJointStrength(continuousActions[++i]);
-        //bpDict[shinL].SetJointStrength(continuousActions[++i]);
-        //bpDict[footL].SetJointStrength(continuousActions[++i]);
-        //bpDict[thighR].SetJointStrength(continuousActions[++i]);
-        //bpDict[shinR].SetJointStrength(continuousActions[++i]);
-        //bpDict[footR].SetJointStrength(continuousActions[++i]);
-        //bpDict[armL].SetJointStrength(continuousActions[++i]);
-        //bpDict[forearmL].SetJointStrength(continuousActions[++i]);
-        //bpDict[armR].SetJointStrength(continuousActions[++i]);
-        //bpDict[forearmR].SetJointStrength(continuousActions[++i]);
+        foreach(var bodyPart in bpDict.Keys)
+        {
+            if (bodyPart.transform != Hips) { 
+                bpDict[bodyPart].SetJointTargetRotation(continuousActions[++i], continuousActions[++i], continuousActions[++i]);
+                //update joint strength settings
+                bpDict[bodyPart].SetJointStrength(continuousActions[++i]);
+            }
+        }
     }
 
-    void FixedUpdate()
+    // 공과 닿아있는동안 Reward를 (-1 / MaxStep) 만큼 감소
+    private void OnCollisionStay(Collision collision)
     {
+        if(collision.transform.CompareTag("BaseballBall"))
+        {
+            AddReward(-1 / MaxStep);
+        }
     }
 
 }
