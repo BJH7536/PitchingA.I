@@ -15,7 +15,7 @@ public class BaseballBall : MonoBehaviour
         // 지면과 닿을 때, reward에 따라 보상 및 EndEpisode
         if (collision.transform.CompareTag("ground"))
         {
-            float reward = Mathf.Pow(1 - (transform.localPosition - StrikeZone.localPosition).magnitude / distance, 2);
+            float reward = 5 - 5 * (transform.localPosition - StrikeZone.localPosition).magnitude / distance;
 
             Debug.Log("Reward : " + reward);
 

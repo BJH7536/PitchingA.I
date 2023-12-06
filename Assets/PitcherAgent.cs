@@ -161,15 +161,15 @@ public class PitcherAgent : Agent
                 bpDict[bodyPart].SetJointStrength(continuousActions[++i]);
             }
         }
+
     }
 
-    // 공과 닿아있는동안 Reward를 (-1 / MaxStep) 만큼 감소
+    // 공과 닿아있는동안 Reward를 MathF.Pow(1.03f, StepCount - 180) 만큼 감소
     private void OnCollisionStay(Collision collision)
     {
-        if(collision.transform.CompareTag("BaseballBall"))
+        if (collision.transform.CompareTag("BaseballBall"))
         {
-            AddReward(-1 / MaxStep);
+            AddReward(MathF.Pow(1.03f, StepCount - 180));
         }
     }
-
 }
