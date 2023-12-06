@@ -1583,8 +1583,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 0
-  penalizeGroundContact: 0
+  agentDoneOnGroundContact: 1
+  penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
 --- !u!1 &1142323082765834547
@@ -3722,7 +3722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DecisionPeriod: 5
-  TakeActionsBetweenDecisions: 0
+  TakeActionsBetweenDecisions: 1
 --- !u!114 &8750300861556558417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3735,9 +3735,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b29724baddfa457da6eeab446fa49ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxJointSpring: 0
+  maxJointSpring: 100
   jointDampen: 1
-  maxJointForceLimit: 10
+  maxJointForceLimit: 100
   bodyPartsList: []
 --- !u!114 &5828676920896070585
 MonoBehaviour:
@@ -3746,7 +3746,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4822869952325542886}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7fe53b73bee2f64ba7acbeb03e146a3, type: 3}
   m_Name: 
@@ -5785,8 +5785,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 0
-  penalizeGroundContact: 0
+  agentDoneOnGroundContact: 1
+  penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
 --- !u!1 &8091608585049117054
