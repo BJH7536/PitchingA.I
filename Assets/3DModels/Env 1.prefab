@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6956066269639659227}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.274, z: 18.410027}
+  m_LocalPosition: {x: -0, y: -0.274, z: 18.44}
   m_LocalScale: {x: 0.52, y: 0.52, z: 0.52}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -298,6 +298,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 303169844430659940, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionAngle
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 303169844430659940, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_SecondaryAxis.x
       value: 1
       objectReference: {fileID: 0}
@@ -320,6 +324,10 @@ PrefabInstance:
     - target: {fileID: 303169844430659940, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 303169844430659940, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionDistance
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 303169844430659940, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_LowAngularXLimit.limit
@@ -346,6 +354,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 447349901553067658, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionAngle
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 447349901553067658, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_SecondaryAxis.z
       value: 1
       objectReference: {fileID: 0}
@@ -360,6 +372,10 @@ PrefabInstance:
     - target: {fileID: 447349901553067658, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: -0.094956815
+      objectReference: {fileID: 0}
+    - target: {fileID: 447349901553067658, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionDistance
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 447349901553067658, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_SlerpDrive.maximumForce
@@ -386,12 +402,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 551547742306309077, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: StrikeZone
+      value: 
+      objectReference: {fileID: 6956066269639659220}
+    - target: {fileID: 551547742306309077, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: BaseballBall
       value: 
       objectReference: {fileID: 383736668318925044}
     - target: {fileID: 810815530746098964, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_SwapBodies
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 810815530746098964, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionAngle
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 810815530746098964, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_SecondaryAxis.y
@@ -408,6 +432,10 @@ PrefabInstance:
     - target: {fileID: 810815530746098964, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 810815530746098964, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionDistance
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 810815530746098964, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_LowAngularXLimit.limit
@@ -434,6 +462,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 969913823347152049, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionAngle
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 969913823347152049, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_SecondaryAxis.y
       value: 0
       objectReference: {fileID: 0}
@@ -448,6 +480,10 @@ PrefabInstance:
     - target: {fileID: 969913823347152049, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 969913823347152049, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionDistance
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 969913823347152049, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_LowAngularXLimit.limit
@@ -502,6 +538,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2480806785607920355, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionAngle
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480806785607920355, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_SecondaryAxis.y
       value: 0
       objectReference: {fileID: 0}
@@ -518,8 +558,12 @@ PrefabInstance:
       value: -0.013803834
       objectReference: {fileID: 0}
     - target: {fileID: 2480806785607920355, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionDistance
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480806785607920355, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_LowAngularXLimit.limit
-      value: -30
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 2480806785607920355, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_HighAngularXLimit.limit
@@ -542,6 +586,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773173627581127636, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionAngle
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2773173627581127636, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_SecondaryAxis.y
       value: 0
       objectReference: {fileID: 0}
@@ -562,8 +610,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773173627581127636, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionDistance
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2773173627581127636, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_LowAngularXLimit.limit
-      value: -90
+      value: -115
       objectReference: {fileID: 0}
     - target: {fileID: 2773173627581127636, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_HighAngularXLimit.limit
@@ -594,6 +646,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2823074677132294078, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionAngle
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823074677132294078, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_SecondaryAxis.x
       value: 1
       objectReference: {fileID: 0}
@@ -612,6 +668,10 @@ PrefabInstance:
     - target: {fileID: 2823074677132294078, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823074677132294078, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionDistance
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 2823074677132294078, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_AngularYLimit.limit
@@ -642,6 +702,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2969571683086075225, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionAngle
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2969571683086075225, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_SecondaryAxis.y
       value: 0
       objectReference: {fileID: 0}
@@ -658,8 +722,12 @@ PrefabInstance:
       value: -0.007829798
       objectReference: {fileID: 0}
     - target: {fileID: 2969571683086075225, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionDistance
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2969571683086075225, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_LowAngularXLimit.limit
-      value: -30
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 2969571683086075225, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_HighAngularXLimit.limit
@@ -682,6 +750,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2977708495135299806, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionAngle
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2977708495135299806, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_SecondaryAxis.y
       value: 0
       objectReference: {fileID: 0}
@@ -698,8 +770,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2977708495135299806, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionDistance
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2977708495135299806, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_LowAngularXLimit.limit
-      value: -70
+      value: -73.399414
       objectReference: {fileID: 0}
     - target: {fileID: 2977708495135299806, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_HighAngularXLimit.limit
@@ -854,6 +930,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5357594003131987459, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionAngle
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357594003131987459, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_SecondaryAxis.y
       value: 0
       objectReference: {fileID: 0}
@@ -868,6 +948,10 @@ PrefabInstance:
     - target: {fileID: 5357594003131987459, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357594003131987459, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionDistance
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 5357594003131987459, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_LowAngularXLimit.limit
@@ -900,6 +984,10 @@ PrefabInstance:
     - target: {fileID: 5496165154129170904, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_DeterministicInference
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5496165154129170904, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 181
       objectReference: {fileID: 0}
     - target: {fileID: 5511204782280678604, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_Axis.z
@@ -958,6 +1046,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5611039602698236510, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionAngle
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611039602698236510, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_SecondaryAxis.y
       value: 0
       objectReference: {fileID: 0}
@@ -972,6 +1064,10 @@ PrefabInstance:
     - target: {fileID: 5611039602698236510, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611039602698236510, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionDistance
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 5611039602698236510, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_LowAngularXLimit.limit
@@ -1090,6 +1186,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6112141058595393518, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionAngle
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6112141058595393518, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_SecondaryAxis.y
       value: 0
       objectReference: {fileID: 0}
@@ -1106,8 +1206,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6112141058595393518, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionDistance
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6112141058595393518, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_LowAngularXLimit.limit
-      value: -70
+      value: -73.064545
       objectReference: {fileID: 0}
     - target: {fileID: 6112141058595393518, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_HighAngularXLimit.limit
@@ -1130,6 +1234,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6184175691712868593, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionAngle
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184175691712868593, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_SecondaryAxis.y
       value: 0
       objectReference: {fileID: 0}
@@ -1146,8 +1254,12 @@ PrefabInstance:
       value: -0.000000031664968
       objectReference: {fileID: 0}
     - target: {fileID: 6184175691712868593, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionDistance
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184175691712868593, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_LowAngularXLimit.limit
-      value: -25
+      value: -30.027985
       objectReference: {fileID: 0}
     - target: {fileID: 6184175691712868593, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_HighAngularXLimit.limit
@@ -1170,6 +1282,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6263378881059436340, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionAngle
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263378881059436340, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_SecondaryAxis.y
       value: 0
       objectReference: {fileID: 0}
@@ -1186,8 +1302,12 @@ PrefabInstance:
       value: -0.00000012188684
       objectReference: {fileID: 0}
     - target: {fileID: 6263378881059436340, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionDistance
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263378881059436340, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_LowAngularXLimit.limit
-      value: -25
+      value: -32.229828
       objectReference: {fileID: 0}
     - target: {fileID: 6263378881059436340, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_HighAngularXLimit.limit
@@ -1318,6 +1438,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7463544519066654104, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionAngle
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7463544519066654104, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: 0.000000027939677
       objectReference: {fileID: 0}
@@ -1328,6 +1452,10 @@ PrefabInstance:
     - target: {fileID: 7463544519066654104, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: -0.000000109896064
+      objectReference: {fileID: 0}
+    - target: {fileID: 7463544519066654104, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionDistance
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 7463544519066654104, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_SlerpDrive.maximumForce
@@ -1519,7 +1647,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8750300861556558417, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: maxJointForceLimit
-      value: 20000
+      value: 4e+10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750300861640370248, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_Mass
+      value: 0.275
       objectReference: {fileID: 0}
     - target: {fileID: 8901308330764049484, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_Axis.x
@@ -1562,6 +1694,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9009101491107266628, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionAngle
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 9009101491107266628, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_SecondaryAxis.y
       value: 0
       objectReference: {fileID: 0}
@@ -1582,8 +1718,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9009101491107266628, guid: 557bac5b236701545bc65142124405b7, type: 3}
+      propertyPath: m_ProjectionDistance
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 9009101491107266628, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_LowAngularXLimit.limit
-      value: -90
+      value: -115
       objectReference: {fileID: 0}
     - target: {fileID: 9009101491107266628, guid: 557bac5b236701545bc65142124405b7, type: 3}
       propertyPath: m_HighAngularXLimit.limit
@@ -1695,6 +1835,10 @@ PrefabInstance:
       propertyPath: StrikeZone
       value: 
       objectReference: {fileID: 6956066269639659220}
+    - target: {fileID: 6143397291044246691, guid: 4e7aa86211a163c43a94441fd82084f1, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8470054979562212235, guid: 4e7aa86211a163c43a94441fd82084f1, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1705,7 +1849,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8470054979562212235, guid: 4e7aa86211a163c43a94441fd82084f1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7316
+      value: 0.7348
       objectReference: {fileID: 0}
     - target: {fileID: 8470054979562212235, guid: 4e7aa86211a163c43a94441fd82084f1, type: 3}
       propertyPath: m_LocalPosition.z
