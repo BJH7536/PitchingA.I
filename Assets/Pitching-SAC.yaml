@@ -1,0 +1,192 @@
+behaviors:
+  Pitching:
+    trainer_type: sac
+    hyperparameters:
+      learning_rate: 0.0003
+      learning_rate_schedule: constant
+      batch_size: 1024
+      buffer_size: 20000
+      buffer_init_steps: 0
+      tau: 0.005
+      steps_per_update: 30.0
+      save_replay_buffer: true
+      init_entcoef: 1.0
+      reward_signal_steps_per_update: 30.0
+    network_settings:
+      normalize: true
+      hidden_units: 512
+      num_layers: 3
+      vis_encode_type: simple
+      memory: null
+      goal_conditioning_type: hyper
+      deterministic: false
+    reward_signals:
+      extrinsic:
+        gamma: 0.995
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          memory: null
+          goal_conditioning_type: hyper
+          deterministic: false
+    init_path: null
+    keep_checkpoints: 10
+    checkpoint_interval: 1500000
+    max_steps: 15000000
+    time_horizon: 1000
+    summary_freq: 10000
+    threaded: false
+    self_play: null
+    behavioral_cloning: null
+environment_parameters:
+  strikezone_offset:
+    curriculum:
+      - name: Lesson0
+        completion_criteria:
+          measure: reward
+          behavior: Pitching
+          signal_smoothing: true
+          min_lesson_length: 1000    # if the agent's reward passes the threshold, 
+          threshold: 10.0            # it should pass at least 100 time. it could be coincidence.
+        value: 1.0
+      - name: Lesson1
+        completion_criteria:
+          measure: reward
+          behavior: Pitching
+          signal_smoothing: true
+          min_lesson_length: 1000
+          threshold: 10.0 
+        value: 2.0
+      - name: Lesson2
+        completion_criteria:
+          measure: reward
+          behavior: Pitching
+          signal_smoothing: true
+          min_lesson_length: 1000
+          threshold: 10.0
+        value: 3.0
+      - name: Lesson3
+        completion_criteria:
+          measure: reward
+          behavior: Pitching
+          signal_smoothing: true
+          min_lesson_length: 1000
+          threshold: 10.0
+        value: 4.0
+      - name: Lesson4
+        completion_criteria:
+          measure: reward
+          behavior: Pitching
+          signal_smoothing: true
+          min_lesson_length: 1000 
+          threshold: 10.0
+        value: 5.0
+      - name: Lesson5
+        completion_criteria:
+          measure: reward
+          behavior: Pitching
+          signal_smoothing: true
+          min_lesson_length: 1000 
+          threshold: 10.0
+        value: 6.0
+      - name: Lesson6
+        completion_criteria:
+          measure: reward
+          behavior: Pitching
+          signal_smoothing: true
+          min_lesson_length: 1000
+          threshold: 10.0
+        value: 7.0
+      - name: Lesson7
+        completion_criteria:
+          measure: reward
+          behavior: Pitching
+          signal_smoothing: true
+          min_lesson_length: 1000
+          threshold: 10.0
+        value: 8.0
+      - name: Lesson8
+        completion_criteria:
+          measure: reward
+          behavior: Pitching
+          signal_smoothing: true
+          min_lesson_length: 1000
+          threshold: 10.0
+        value: 9.0
+      - name: Lesson9
+        completion_criteria:
+          measure: reward
+          behavior: Pitching
+          signal_smoothing: true
+          min_lesson_length: 1000
+          threshold: 10.0
+        value: 10.0
+      - name: Lesson10
+        completion_criteria:
+          measure: reward
+          behavior: Pitching
+          signal_smoothing: true
+          min_lesson_length: 1000
+          threshold: 10.0
+        value: 11.0
+      - name: Lesson11
+        completion_criteria:
+          measure: reward
+          behavior: Pitching
+          signal_smoothing: true
+          min_lesson_length: 1000
+          threshold: 10.0
+        value: 12.0
+      - name: Lesson12
+        completion_criteria:
+          measure: reward
+          behavior: Pitching
+          signal_smoothing: true
+          min_lesson_length: 1000
+          threshold: 10.0
+        value: 13.0
+      - name: Lesson13
+        completion_criteria:
+          measure: reward
+          behavior: Pitching
+          signal_smoothing: true
+          min_lesson_length: 1000
+          threshold: 10.0
+        value: 14.0
+      - name: Lesson14
+        completion_criteria:
+          measure: reward
+          behavior: Pitching
+          signal_smoothing: true
+          min_lesson_length: 1000
+          threshold: 10.0
+        value: 15.0
+      - name: Lesson15
+        completion_criteria:
+          measure: reward
+          behavior: Pitching
+          signal_smoothing: true
+          min_lesson_length: 1000
+          threshold: 10.0
+        value: 16.0
+      - name: Lesson16
+        completion_criteria:
+          measure: reward
+          behavior: Pitching
+          signal_smoothing: true
+          min_lesson_length: 1000
+          threshold: 10.0
+        value: 17.0
+      - name: Lesson17
+        completion_criteria:
+          measure: reward
+          behavior: Pitching
+          signal_smoothing: true
+          min_lesson_length: 1000
+          threshold: 10.0
+        value: 18.0
+      - name: Lesson18
+        value: 18.44
