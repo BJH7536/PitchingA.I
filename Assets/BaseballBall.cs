@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using Unity.MLAgents;
 using UnityEngine;
 
 public class BaseballBall : MonoBehaviour
@@ -9,34 +11,44 @@ public class BaseballBall : MonoBehaviour
     public Rigidbody _rb;
 
     float distance = 18.44f;
-
+    
     private void OnCollisionEnter(Collision collision)
     {
-        // 지면과 닿을 때, reward에 따라 보상 및 EndEpisode
+        // 지면과 닿을 때,
         if (collision.transform.CompareTag("ground"))
         {
-            float reward = 5 - 5 * (transform.localPosition - StrikeZone.localPosition).magnitude / distance;
+            _Agent.AddReward(calculateDistance());         // 스트라이크 존에 도달한 정도에 비례하여 보상량 결정 max:5
 
-            Debug.Log("Reward : " + reward);
-
-            _Agent.AddReward(reward);
-            _Agent.EndEpisode();
-        }
-        // 스트라이크 존에 닿을 때, 보상 1 및 EndEpisode
-        else if (collision.transform.CompareTag("StrikeZone"))
-        {
-            _Agent.AddReward(1);
             _Agent.EndEpisode();
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        // 손에서 떨어질 때, z방향 가속도와 비례하여 보상.
-        if (collision.transform.CompareTag("PitcherRightHand"))
+        // 스트라이크 존에 닿을 때,
+        if (other.CompareTag("StrikeZone"))
         {
-            _Agent.AddReward(_rb.velocity.z);
+            _Agent.AddReward(10);                           // 차별되는 큰 보상 지급                     
+            _Agent.AddReward(_rb.velocity.z * 1.5f);        // 더욱 빠르게 던지는 것을 유도하기 위해
+
+            _Agent.EndEpisode();
         }
+    }
+
+    /// <summary>
+    /// 전체 수평 거리에 대한 야구공과의 수평 거리의 비율
+    /// </summary>
+    /// <returns></returns>
+    public float calculateDistance()
+    {
+        distance = Academy.Instance.EnvironmentParameters.GetWithDefault("strikezone_offset", distance);
+
+        float Dist = Mathf.Sqrt(Mathf.Pow(transform.localPosition.x - StrikeZone.localPosition.x, 2) + Mathf.Pow(transform.localPosition.z - StrikeZone.localPosition.z, 2)) / distance;
+
+        var statsRecorder = Academy.Instance.StatsRecorder;
+        statsRecorder.Add("Distance_Between_Ball_and_StrikeZone", Dist);
+
+        return 5 * (1 - Dist);
     }
 
 }

@@ -6,11 +6,13 @@ using Unity.MLAgentsExamples;
 using Unity.MLAgents.Sensors;
 using BodyPart = Unity.MLAgentsExamples.BodyPart;
 using Random = UnityEngine.Random;
+using Unity.VisualScripting;
+using System.Data;
 
 public class PitcherAgent : Agent
 {
     [Header("Target To Hit")] 
-    public Transform target;  // StrikeZone
+    public Transform StrikeZone;
 
     [Header("Body Parts")] 
     public Transform Hips;
@@ -56,6 +58,7 @@ public class PitcherAgent : Agent
 
     JointDriveController m_JdController;
     Vector3 BallInitPos;
+    float distance = 18.44f;
 
     public override void Initialize()
     {
@@ -101,6 +104,11 @@ public class PitcherAgent : Agent
     public override void OnEpisodeBegin()
     {
         BaseballBall.transform.localPosition = BallInitPos;
+        BaseballBall.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        BaseballBall.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+
+        // Curriculum Learning에 따른 스트라이크 존과의 거리 재조정
+        StrikeZone.localPosition = new Vector3(0, -0.274f, Academy.Instance.EnvironmentParameters.GetWithDefault("strikezone_offset", distance));
 
         //Reset all of the body parts
         foreach (var bodyPart in m_JdController.bodyPartsDict.Values)
@@ -133,9 +141,11 @@ public class PitcherAgent : Agent
     {
         // [관측값]
         // 야구공의 3차원 로컬 좌표 : 3개
+        // 스트라이크 존의 3차원 로컬 좌표 : 3개
         // 모든 BodyPart의 로컬 회전값 (4차원) + 가해지는 힘 + touchingGround유무 : 29(Hip제외) * 6 + 1(Hip) * 1 = 175개
 
         sensor.AddObservation(BaseballBall.transform.localPosition);
+        sensor.AddObservation(StrikeZone.localPosition);
 
         foreach (var bodyPart in m_JdController.bodyPartsList)
         {
@@ -162,14 +172,23 @@ public class PitcherAgent : Agent
             }
         }
 
+        // 머리의 높이가 엉덩이의 높이까지 내려오면,
+        if(Head.position.y <= Hips.position.y)
+        {
+            var statsRecorder = Academy.Instance.StatsRecorder;
+            statsRecorder.Add("Distance_Between_Ball_and_StrikeZone", BaseballBall.GetComponent<BaseballBall>().calculateDistance());
+
+            AddReward(-50);     // 패널티
+            EndEpisode();       // Episode 종료
+        }
     }
 
-    // 공과 닿아있는동안 Reward를 MathF.Pow(1.03f, StepCount - 180) 만큼 감소
+    // 공과 닿아있는동안 Reward를 -Mathf.Pow(1.8f, StepCount - 30) 만큼 감소
     private void OnCollisionStay(Collision collision)
     {
         if (collision.transform.CompareTag("BaseballBall"))
         {
-            AddReward(MathF.Pow(1.03f, StepCount - 180));
+            AddReward(-Mathf.Pow(1.8f, StepCount - 30));
         }
     }
 }
