@@ -13,6 +13,8 @@ namespace Unity.MLAgentsExamples
     {
         [HideInInspector] public Agent agent;
 
+        BaseballBall ball;
+
         [Header("Ground Check")] public bool agentDoneOnGroundContact; // Whether to reset agent on ground contact.
         public bool penalizeGroundContact; // Whether to penalize on contact.
         public float groundContactPenalty; // Penalty amount (ex: -1).
@@ -29,7 +31,7 @@ namespace Unity.MLAgentsExamples
                 touchingGround = true;
                 if (penalizeGroundContact)
                 {
-                    agent.SetReward(groundContactPenalty);
+                    agent.AddReward(groundContactPenalty);
                 }
 
                 if (agentDoneOnGroundContact)
