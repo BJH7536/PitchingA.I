@@ -3,6 +3,7 @@
 ## 강화학습을 통한 최적의 투구자세 제시 모델
 - 위 프로젝트는 2023년도 2학기동안 진행하는 프로젝트.
 - ML-agent를 이용, 강화학습을 통해 모델의 학습을 진행.
+- [프로젝트 - 최적의 투구 자세 제안 모델](https://www.notion.so/bjh7536/ML-Agent-a8382e7fba6e48ba989b0a7dde9a2069)
 
 ![Y2meta app-1500000step-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/f841425b-1ca8-421c-b7af-98f4bb578df5)
 
